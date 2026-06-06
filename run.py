@@ -5,8 +5,7 @@ def generate_section(items, title):
     section_html = f'<div class="mdui-typo-headline mdui-m-t-4 mdui-m-b-2">{title}</div>'
     section_html += '<div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">'
     for item in items:
-        # 重点：在这里添加了 id 属性
-        item_id = item.get('id', '')
+        item_id = item.get('id', '0')
         section_html += f"""
         <div class="mdui-col mdui-p-a-2">
             <div class="mdui-card mdui-hoverable item-card" id="{item_id}">
@@ -17,8 +16,14 @@ def generate_section(items, title):
                     {item['desc']}
                 </div>
                 <div class="mdui-card-actions">
-                    <div class="mdui-chip mdui-m-l-1"><span class="mdui-chip-title">ID: {item_id}</span></div>
-                    <a href="{item['download-url']}" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent mdui-float-right">Download</a>
+                    <!-- 点击 ID 按钮复制链接 -->
+                    <button class="mdui-btn mdui-btn-icon mdui-ripple mdui-text-color-theme-accent" 
+                            onclick="copyLink('{item_id}')" mdui-tooltip="{{content: '复制此项链接'}}">
+                        <i class="mdui-icon material-icons">link</i>
+                    </button>
+                    <span class="mdui-typo-caption-opacity">ID: {item_id}</span>
+                    
+                    <a href="{item['download-url']}" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent mdui-float-right" style="border-radius: 12px !important;">Download</a>
                 </div>
             </div>
         </div>"""
@@ -57,13 +62,11 @@ def generate_html():
                 border: 1px solid rgba(255,255,255,0.1);
                 transition: all 0.3s;
             }}
-            /* 高亮动画样式 */
             .highlight-active {{
                 border: 2px solid #ff4081 !important;
                 box-shadow: 0 0 30px rgba(255, 64, 129, 0.5) !important;
-                transform: scale(1.05);
+                transform: scale(1.03);
             }}
-            .mdui-btn {{ border-radius: 12px !important; }}
             footer {{ margin-top: 50px; padding: 30px; background: rgba(0,0,0,0.5); text-align: center; border-radius: 25px 25px 0 0; }}
         </style>
     </head>
@@ -83,33 +86,47 @@ def generate_html():
             </footer>
         </div>
 
+        <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
         <script>
-            // 自动跳转与高亮逻辑
+            // 复制链接功能
+            function copyLink(id) {{
+                // 获取不带参数的当前 URL
+                const baseUrl = window.location.href.split('?')[0];
+                const shareUrl = baseUrl + '?id=' + id;
+                
+                // 使用 Clipboard API 复制
+                navigator.clipboard.writeText(shareUrl).then(() => {{
+                    mdui.snackbar({{
+                        message: '链接已复制: ' + id,
+                        position: 'bottom'
+                    }});
+                }}).catch(err => {{
+                    console.error('复制失败', err);
+                }});
+            }}
+
+            // 自动跳转与高亮
             window.onload = function() {{
                 const urlParams = new URLSearchParams(window.location.search);
                 const targetId = urlParams.get('id');
-                
                 if (targetId) {{
                     const element = document.getElementById(targetId);
                     if (element) {{
-                        // 1. 滚动到目标位置
                         setTimeout(() => {{
                             element.scrollIntoView({{ behavior: 'smooth', block: 'center' }});
-                            // 2. 添加高亮类
                             element.classList.add('highlight-active');
                         }}, 500);
                     }}
                 }}
             }};
         </script>
-        <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
     </body>
     </html>
     """
 
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_template)
-    print("Generated successfully! Use index.html?id=YOUR_ID to test.")
+    print("生成成功！现在点击卡片左下角的按钮即可复制链接。")
 
 if __name__ == "__main__":
     generate_html()
