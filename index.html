@@ -11,14 +11,23 @@
                 background: url('https://g-bg-api.traveler.dpdns.org/h') no-repeat center center fixed;
                 background-size: cover;
                 min-height: 100vh;
+                scroll-behavior: smooth;
             }
-            footer {
-                margin-top: 50px;
-                padding: 30px;
-                background: rgba(0,0,0,0.5);
-                text-align: center;
-                border-radius: 25px 25px 0 0;
+            .item-card {
+                border-radius: 25px !important;
+                background: rgba(30, 30, 30, 0.75) !important;
+                backdrop-filter: blur(15px);
+                border: 1px solid rgba(255,255,255,0.1);
+                transition: all 0.3s;
             }
+            /* 高亮动画样式 */
+            .highlight-active {
+                border: 2px solid #ff4081 !important;
+                box-shadow: 0 0 30px rgba(255, 64, 129, 0.5) !important;
+                transform: scale(1.05);
+            }
+            .mdui-btn { border-radius: 12px !important; }
+            footer { margin-top: 50px; padding: 30px; background: rgba(0,0,0,0.5); text-align: center; border-radius: 25px 25px 0 0; }
         </style>
     </head>
     <body class="mdui-theme-layout-dark mdui-theme-primary-blue-grey mdui-theme-accent-pink">
@@ -30,7 +39,7 @@
 
             <div class="mdui-typo-headline mdui-m-t-4 mdui-m-b-2">🚀 客户端</div><div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
         <div class="mdui-col mdui-p-a-2">
-            <div class="mdui-card mdui-hoverable" style="border-radius: 25px !important; background: rgba(30, 30, 30, 0.75) !important; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1);">
+            <div class="mdui-card mdui-hoverable item-card" id="client-augustus">
                 <div class="mdui-card-primary">
                     <div class="mdui-card-primary-title">Augustus Client</div>
                 </div>
@@ -38,13 +47,14 @@
                     一款功能强大的黑壳客户端，常被用于绕过Spiter和Polar这种严格的反作弊，但是现在get cracked（Old Version）
                 </div>
                 <div class="mdui-card-actions">
-                    <a href="https://blog.traveler.dpdns.org/post/3.html" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent mdui-float-right" style="border-radius: 12px !important;">Download</a>
+                    <div class="mdui-chip mdui-m-l-1"><span class="mdui-chip-title">ID: client-augustus</span></div>
+                    <a href="https://blog.traveler.dpdns.org/post/3.html" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent mdui-float-right">Download</a>
                 </div>
             </div>
         </div></div>
             <div class="mdui-typo-headline mdui-m-t-4 mdui-m-b-2">🎨 材质包</div><div class="mdui-row-xs-1 mdui-row-sm-2 mdui-row-md-3">
         <div class="mdui-col mdui-p-a-2">
-            <div class="mdui-card mdui-hoverable" style="border-radius: 25px !important; background: rgba(30, 30, 30, 0.75) !important; backdrop-filter: blur(15px); border: 1px solid rgba(255,255,255,0.1);">
+            <div class="mdui-card mdui-hoverable item-card" id="resourcepack-none">
                 <div class="mdui-card-primary">
                     <div class="mdui-card-primary-title">暂无</div>
                 </div>
@@ -52,16 +62,37 @@
                     暂无
                 </div>
                 <div class="mdui-card-actions">
-                    <a href="#" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent mdui-float-right" style="border-radius: 12px !important;">Download</a>
+                    <div class="mdui-chip mdui-m-l-1"><span class="mdui-chip-title">ID: resourcepack-none</span></div>
+                    <a href="#" class="mdui-btn mdui-ripple mdui-btn-raised mdui-color-theme-accent mdui-float-right">Download</a>
                 </div>
             </div>
         </div></div>
 
             <footer>
                 <div class="mdui-typo-caption-opacity mdui-m-b-1">Links</div>
-                <a href="https://blog.traveler.dpdns.org/" target="_blank" class="mdui-btn mdui-ripple">我的博客</a><a href="https://github.com/tr114514-qwq" target="_blank" class="mdui-btn mdui-ripple">GitHub</a><a href="https://space.bilibili.com/3494372742007691" target="_blank" class="mdui-btn mdui-ripple">B站</a>
+                <a href="https://blog.traveler.dpdns.org/" class="mdui-btn mdui-ripple">我的博客</a><a href="https://github.com/tr114514-qwq" class="mdui-btn mdui-ripple">GitHub</a><a href="https://space.bilibili.com/3494372742007691" class="mdui-btn mdui-ripple">B站</a>
             </footer>
         </div>
+
+        <script>
+            // 自动跳转与高亮逻辑
+            window.onload = function() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const targetId = urlParams.get('id');
+                
+                if (targetId) {
+                    const element = document.getElementById(targetId);
+                    if (element) {
+                        // 1. 滚动到目标位置
+                        setTimeout(() => {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                            // 2. 添加高亮类
+                            element.classList.add('highlight-active');
+                        }, 500);
+                    }
+                }
+            };
+        </script>
         <script src="https://unpkg.com/mdui@1.0.2/dist/js/mdui.min.js"></script>
     </body>
     </html>

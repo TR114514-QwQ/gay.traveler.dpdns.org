@@ -8,6 +8,7 @@
   },
   "client": [
     {
+      "id": "client-augustus",
       "name": "Augustus Client",
       "desc": "一款功能强大的黑壳客户端，常被用于绕过Spiter和Polar这种严格的反作弊，但是现在get cracked（Old Version）",
       "download-url": "https://blog.traveler.dpdns.org/post/3.html" 
@@ -15,6 +16,7 @@
   ],
   "resourcepack": [
     {
+      "id": "resourcepack-none",
       "name": "暂无",
       "desc": "暂无",
       "download-url": "#"
