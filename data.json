@@ -20,10 +20,10 @@
       "download-url": "./download/client/liquidbounce-legacy-b100.jar" 
     },
     {
-      "id": "client-liquidbounce-nextgen-v0.38.0",
-      "name": "LiquidBounce Nextgen v0.38.0", 
-      "desc": "Nextgen版本，除了多了绕过，其他没啥了。",
-      "download-url": "https://liquidbounce.net/download/15463" 
+      "id": "client-augustus-2.6",
+      "name": "Augustus Client 2.6",
+      "desc": "Augustus客户端2.6版本。",
+      "download-url": "./download/client/augustus-2.6.zip" 
     }
   ],
   "resourcepack": [
