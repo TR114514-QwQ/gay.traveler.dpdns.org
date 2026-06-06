@@ -1,0 +1,28 @@
+{
+  "config": {
+    "page_title": "TR114514",
+    "page_description": "客户端和资源包的下载页面<br>TR114514 is gay!",
+    "background_api": "https://g-bg-api.traveler.dpdns.org/h",
+    "client_title": "🚀 客户端", 
+    "resource_title": "🎨 材质包"
+  },
+  "client": [
+    {
+      "name": "Augustus Client",
+      "desc": "一款功能强大的黑壳客户端，常被用于绕过Spiter和Polar这种严格的反作弊，但是现在get cracked（Old Version）",
+      "download-url": "https://blog.traveler.dpdns.org/post/3.html" 
+    }
+  ],
+  "resourcepack": [
+    {
+      "name": "暂无",
+      "desc": "暂无",
+      "download-url": "#"
+    }
+  ],
+  "links": [
+    {"name": "我的博客", "url": "https://blog.traveler.dpdns.org/"},
+    {"name": "GitHub", "url": "https://github.com/tr114514-qwq"},
+    {"name": "B站", "url": "https://space.bilibili.com/3494372742007691"}
+  ]
+}
