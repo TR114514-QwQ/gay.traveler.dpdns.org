@@ -28,10 +28,10 @@
   ],
   "resourcepack": [
     {
-      "id": "resourcepack-none",
-      "name": "暂无",
-      "desc": "暂无",
-      "download-url": "#"
+      "id": "resourcepack-no-block-breaking-particles-1.8",
+      "name": "No_Block_Breaking_Particles_1.8",
+      "desc": "无方块破坏粒子。",
+      "download-url": "./download/resourcepack/No_Block_Breaking_Particles_1.8.zip"
     }
   ],
   "links": [
