@@ -10,13 +10,13 @@
     {
       "id": "client-augustus-cracked",
       "name": "Augustus Client Cracked",
-      "desc": "一款功能强大的黑壳客户端，常被用于绕过Spiter和Polar这种严格的反作弊，但是现在get cracked（Old Version）。",
+      "desc": "augustus client b 4.20.3",
       "download-url": "https://blog.traveler.dpdns.org/post/3.html" 
     },    
     {
       "id": "client-liquidbounce-legacy-b100",
       "name": "LiquidBounce Legacy b100",
-      "desc": "一款开发历史悠久的客户端，但是目前CCBlueX团队已经停止维护，去写nextgen版本，但是你会发现，nextgen和legacy对刀，反倒是停更1年的legacy版本打赢了nextgen版本。",
+      "desc": "powered by ccbluex",
       "download-url": "./download/client/liquidbounce-legacy-b100.jar" 
     }
   ],
